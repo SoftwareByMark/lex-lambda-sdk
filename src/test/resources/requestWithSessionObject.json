@@ -1,0 +1,26 @@
+{
+  "currentIntent": {
+    "name": "OrderIntent",
+    "slots": {
+      "slot1": "value1",
+      "slot2": "value2",
+      "slot3": "value3"
+    },
+    "confirmationStatus": "None"
+  },
+  "bot": {
+    "name": "OrderBot",
+    "alias": "OrderBotAlias",
+    "version": "1.0"
+  },
+  "userId": "userId1234",
+  "inputTranscript": "order a book",
+  "invocationSource": "FulfillmentCodeHook",
+  "outputDialogMode": "Text",
+  "messageVersion": "1.0",
+  "sessionAttributes": {
+    "cars": "[ {\"make\":\"ford\",\"model\":\"focus\" }, {\"make\":\"vw\",\"model\":\"golf\" }, {\"make\":\"honda\",\"model\":\"civic\" } ]",
+    "key2": "value2",
+    "key3": "value3"
+  }
+}
