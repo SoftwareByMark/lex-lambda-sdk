@@ -50,7 +50,7 @@ public class LexRequestStreamHandlerTest {
             public LexResponse handleRequest(LexRequest lexRequest, Map<String,String> sessionAttributes) {
                 return null;
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         lexRequestStreamHandler.handleRequest(inputStream, new ByteArrayOutputStream(), null);
     }
@@ -80,7 +80,7 @@ public class LexRequestStreamHandlerTest {
                 assertEquals(2, sessionAttributes.size());
                 return createCloseDialogActionResponse();
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         lexRequestStreamHandler.handleRequest(inputStream, new ByteArrayOutputStream(), null);
     }
@@ -94,7 +94,7 @@ public class LexRequestStreamHandlerTest {
                 sessionAttributes.put("key3", "value3");
                 return createCloseDialogActionResponse();
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -113,7 +113,7 @@ public class LexRequestStreamHandlerTest {
                 sessionAttributes.put("key3", "value3");
                 return createConfirmIntentDialogActionResponse(lexRequest);
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -132,7 +132,7 @@ public class LexRequestStreamHandlerTest {
                 sessionAttributes.put("key3", "value3");
                 return createDelegateDialogActionResponse(lexRequest);
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -151,7 +151,7 @@ public class LexRequestStreamHandlerTest {
                 sessionAttributes.put("key3", "value3");
                 return createElicitIntentDialogActionResponse();
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -170,7 +170,7 @@ public class LexRequestStreamHandlerTest {
                 sessionAttributes.put("key3", "value3");
                 return createElicitSlotDialogActionResponse(lexRequest);
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -201,7 +201,7 @@ public class LexRequestStreamHandlerTest {
                 saveObjectIntoSession(sessionAttributes, "cars", cars, typeReference);
                 return createCloseDialogActionResponse(FulfillmentState.Fulfilled);
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("requestWithSessionObject.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
@@ -233,7 +233,7 @@ public class LexRequestStreamHandlerTest {
                 String message = RandomStringUtils.randomAlphabetic(MessageVerifier.MAX_CONTENT_LENGTH+1);
                 return createCloseDialogActionResponse(FulfillmentState.Fulfilled, message, responseCard);
             }
-        });
+        }) {};
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("request.json");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         lexRequestStreamHandler.handleRequest(inputStream, byteArrayOutputStream, null);
