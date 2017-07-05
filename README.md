@@ -31,7 +31,7 @@ mvn clean install
 
 ## Usage
 
-See the example Bot for the usage of this SDK
+See the [sample Bot](https://github.com/SoftwareByMark/lex-lambda-hellobot) for the usage of this SDK
 
 ## Built With
 

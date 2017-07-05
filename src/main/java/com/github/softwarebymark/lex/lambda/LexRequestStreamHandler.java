@@ -38,7 +38,7 @@ import java.util.Map;
  *
  * @author Mark Borner
  */
-public class LexRequestStreamHandler implements RequestStreamHandler {
+public abstract class LexRequestStreamHandler implements RequestStreamHandler {
 
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
     private LexResponseVerifier lexResponseVerifier = new LexResponseVerifier();

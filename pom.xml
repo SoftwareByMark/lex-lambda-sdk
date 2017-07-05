@@ -4,7 +4,7 @@
 
     <groupId>com.github.softwarebymark.lex</groupId>
     <artifactId>lex-lambda-sdk</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>An SDK for processing Lex requests in Lambda</name>
