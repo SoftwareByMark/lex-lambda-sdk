@@ -16,8 +16,6 @@
 
 package com.github.softwarebymark.lex.domain.action;
 
-import com.github.softwarebymark.lex.domain.LexRequest;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -30,12 +28,12 @@ public class DelegateDialogAction extends DialogAction {
 
     private final Map<String,String> slots;
 
-    public DelegateDialogAction(LexRequest lexRequest) {
+    public DelegateDialogAction(Map<String,String> slots) {
         super("Delegate");
-        if (lexRequest == null) {
-            throw new IllegalArgumentException("LexRequest should not be null");
+        if (slots == null) {
+            throw new IllegalArgumentException("Slots should not be null");
         }
-        this.slots = lexRequest.getIntent().getSlots();
+        this.slots = slots;
     }
 
     public Map<String, String> getSlots() {

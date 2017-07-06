@@ -248,12 +248,12 @@ public class LexRequestStreamHandlerTest {
     }
 
     private LexResponse createConfirmIntentDialogActionResponse(LexRequest lexRequest) {
-        ConfirmIntentDialogAction confirmIntentDialogAction = new ConfirmIntentDialogAction(lexRequest, new Message("<speak>Yo!</speak>"), createResponseCard());
+        ConfirmIntentDialogAction confirmIntentDialogAction = new ConfirmIntentDialogAction(lexRequest.getIntent().getName(), lexRequest.getIntent().getSlots(), new Message("<speak>Yo!</speak>"), createResponseCard());
         return new LexResponse(confirmIntentDialogAction);
     }
 
     private LexResponse createDelegateDialogActionResponse(LexRequest lexRequest) {
-        DelegateDialogAction delegateDialogAction = new DelegateDialogAction(lexRequest);
+        DelegateDialogAction delegateDialogAction = new DelegateDialogAction(lexRequest.getIntent().getSlots());
         return new LexResponse(delegateDialogAction);
     }
 
@@ -263,7 +263,7 @@ public class LexRequestStreamHandlerTest {
     }
 
     private LexResponse createElicitSlotDialogActionResponse(LexRequest lexRequest) {
-        ElicitSlotDialogAction elicitSlotDialogAction = new ElicitSlotDialogAction("MySlot", lexRequest, new Message("Value?"), createResponseCard());
+        ElicitSlotDialogAction elicitSlotDialogAction = new ElicitSlotDialogAction("MySlot", lexRequest.getIntent().getName(), lexRequest.getIntent().getSlots(), new Message("Value?"), createResponseCard());
         return new LexResponse(elicitSlotDialogAction);
     }
 

@@ -36,11 +36,11 @@ public abstract class AbstractLexRequestHandler implements LexRequestHandler {
     /**
      * Creates a Lex Request with a Delegate Dialog Action
      *
-     * @param lexRequest The Lex Request
+     * @param slots A map of slots
      * @return A Lex Response
      */
-    protected LexResponse createDelegateDialogActionResponse(LexRequest lexRequest) {
-        return new LexResponse(new DelegateDialogAction(lexRequest));
+    protected LexResponse createDelegateDialogActionResponse(Map<String,String> slots) {
+        return new LexResponse(new DelegateDialogAction(slots));
     }
 
     /**
@@ -90,45 +90,49 @@ public abstract class AbstractLexRequestHandler implements LexRequestHandler {
     /**
      * Creates a Lex Request with a Confirm Intent Dialog Action
      *
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent to confirm
+     * @param slots A map of slots
      * @return A Lex Response
      */
-    protected LexResponse createConfirmIntentDialogActionResponse(LexRequest lexRequest) {
-        return new LexResponse(new ConfirmIntentDialogAction(lexRequest));
+    protected LexResponse createConfirmIntentDialogActionResponse(String intentName, Map<String,String> slots) {
+        return new LexResponse(new ConfirmIntentDialogAction(intentName, slots));
     }
 
     /**
      * Creates a Lex Request with a Confirm Intent Dialog Action
      *
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent to confirm
+     * @param slots A map of slots
      * @param message The message for the response
      * @return A Lex Response
      */
-    protected LexResponse createConfirmIntentDialogActionResponse(LexRequest lexRequest, String message) {
-        return new LexResponse(new ConfirmIntentDialogAction(lexRequest, new Message(message)));
+    protected LexResponse createConfirmIntentDialogActionResponse(String intentName, Map<String,String> slots, String message) {
+        return new LexResponse(new ConfirmIntentDialogAction(intentName, slots, new Message(message)));
     }
 
     /**
      * Creates a Lex Request with a Confirm Intent Dialog Action
      *
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent to confirm
+     * @param slots A map of slots
      * @param message The message for the response
      * @param responseCard The response card for the response
      * @return A Lex Response
      */
-    protected LexResponse createConfirmIntentDialogActionResponse(LexRequest lexRequest, String message, ResponseCard responseCard) {
-        return new LexResponse(new ConfirmIntentDialogAction(lexRequest, new Message(message), responseCard));
+    protected LexResponse createConfirmIntentDialogActionResponse(String intentName, Map<String,String> slots, String message, ResponseCard responseCard) {
+        return new LexResponse(new ConfirmIntentDialogAction(intentName, slots, new Message(message), responseCard));
     }
 
     /**
      * Creates a Lex Request with a Confirm Intent Dialog Action
      *
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent to confirm
+     * @param slots A map of slots
      * @param responseCard The response card for the response
      * @return A Lex Response
      */
-    protected LexResponse createConfirmIntentDialogActionResponse(LexRequest lexRequest, ResponseCard responseCard) {
-        return new LexResponse(new ConfirmIntentDialogAction(lexRequest, responseCard));
+    protected LexResponse createConfirmIntentDialogActionResponse(String intentName, Map<String,String> slots, ResponseCard responseCard) {
+        return new LexResponse(new ConfirmIntentDialogAction(intentName, slots, responseCard));
     }
 
     /**
@@ -175,48 +179,52 @@ public abstract class AbstractLexRequestHandler implements LexRequestHandler {
      * Creates a Lex Request with a Elicit Slot Dialog Action
      *
      * @param slotToElicit The name of the slot to elicit
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent
+     * @param slots A map of slots
      * @return A Lex Response
      */
-    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, LexRequest lexRequest) {
-        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, lexRequest));
+    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, String intentName, Map<String,String> slots) {
+        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, intentName, slots));
     }
 
     /**
      * Creates a Lex Request with a Elicit Slot Dialog Action
      *
      * @param slotToElicit The name of the slot to elicit
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent
+     * @param slots A map of slots
      * @param message The message for the response
      * @return A Lex Response
      */
-    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, LexRequest lexRequest, String message) {
-        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, lexRequest, new Message(message)));
+    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, String intentName, Map<String,String> slots, String message) {
+        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, intentName, slots, new Message(message)));
     }
 
     /**
      * Creates a Lex Request with a Elicit Slot Dialog Action
      *
      * @param slotToElicit The name of the slot to elicit
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent
+     * @param slots A map of slots
      * @param message The message for the response
      * @param responseCard The response card for the response
      * @return A Lex Response
      */
-    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, LexRequest lexRequest, String message, ResponseCard responseCard) {
-        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, lexRequest, new Message(message), responseCard));
+    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, String intentName, Map<String,String> slots, String message, ResponseCard responseCard) {
+        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, intentName, slots, new Message(message), responseCard));
     }
 
     /**
      * Creates a Lex Request with a Elicit Slot Dialog Action
      *
      * @param slotToElicit The name of the slot to elicit
-     * @param lexRequest The Lex Request
+     * @param intentName The name of the intent
+     * @param slots A map of slots
      * @param responseCard The response card for the response
      * @return A Lex Response
      */
-    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, LexRequest lexRequest, ResponseCard responseCard) {
-        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, lexRequest, responseCard));
+    protected LexResponse createElicitSlotDialogActionResponse(String slotToElicit, String intentName, Map<String,String> slots, ResponseCard responseCard) {
+        return new LexResponse(new ElicitSlotDialogAction(slotToElicit, intentName, slots, responseCard));
     }
 
     /**

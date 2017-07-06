@@ -17,7 +17,6 @@
 package com.github.softwarebymark.lex.domain.action;
 
 import com.github.softwarebymark.lex.domain.ResponseCard;
-import com.github.softwarebymark.lex.domain.LexRequest;
 import com.github.softwarebymark.lex.domain.Message;
 
 import java.util.Map;
@@ -33,31 +32,31 @@ public class ElicitSlotDialogAction extends DialogActionWithDetails {
     private final Map<String,String> slots;
     private final String slotToElicit;
 
-    public ElicitSlotDialogAction(String slotToElicit, LexRequest lexRequest) {
+    public ElicitSlotDialogAction(String slotToElicit, String intentName, Map<String,String> slots) {
         super("ElicitSlot");
-        if (slotToElicit == null) {
-            throw new IllegalArgumentException("Slot to Elicit should not be null");
+        if (intentName == null) {
+            throw new IllegalArgumentException("Intent Name should not be null");
         }
-        if (lexRequest == null) {
-            throw new IllegalArgumentException("LexRequest should not be null");
+        if (slots == null) {
+            throw new IllegalArgumentException("Slots should not be null");
         }
-        this.intentName = lexRequest.getIntent().getName();
+        this.intentName = intentName;
         this.slotToElicit = slotToElicit;
-        this.slots = lexRequest.getIntent().getSlots();
+        this.slots = slots;
     }
 
-    public ElicitSlotDialogAction(String slotToElicit, LexRequest lexRequest, Message message) {
-        this(slotToElicit, lexRequest);
+    public ElicitSlotDialogAction(String slotToElicit, String intentName, Map<String,String> slots, Message message) {
+        this(slotToElicit, intentName, slots);
         setMessage(message);
     }
 
-    public ElicitSlotDialogAction(String slotToElicit, LexRequest lexRequest, Message message, ResponseCard responseCard) {
-        this(slotToElicit, lexRequest, message);
+    public ElicitSlotDialogAction(String slotToElicit, String intentName, Map<String,String> slots, Message message, ResponseCard responseCard) {
+        this(slotToElicit, intentName, slots, message);
         setResponseCard(responseCard);
     }
 
-    public ElicitSlotDialogAction(String slotToElicit, LexRequest lexRequest, ResponseCard responseCard) {
-        this(slotToElicit, lexRequest);
+    public ElicitSlotDialogAction(String slotToElicit, String intentName, Map<String,String> slots, ResponseCard responseCard) {
+        this(slotToElicit, intentName, slots);
         setResponseCard(responseCard);
     }
 

@@ -17,7 +17,6 @@
 package com.github.softwarebymark.lex.domain.action;
 
 import com.github.softwarebymark.lex.domain.ResponseCard;
-import com.github.softwarebymark.lex.domain.LexRequest;
 import com.github.softwarebymark.lex.domain.Message;
 
 import java.util.Collections;
@@ -33,27 +32,30 @@ public class ConfirmIntentDialogAction extends DialogActionWithDetails {
     private final String intentName;
     private final Map<String,String> slots;
 
-    public ConfirmIntentDialogAction(LexRequest lexRequest) {
+    public ConfirmIntentDialogAction(String intentName, Map<String,String> slots) {
         super("ConfirmIntent");
-        if (lexRequest == null) {
-            throw new IllegalArgumentException("LexRequest should not be null");
+        if (intentName == null) {
+            throw new IllegalArgumentException("Intent Name should not be null");
         }
-        this.intentName = lexRequest.getIntent().getName();
-        this.slots = lexRequest.getIntent().getSlots();
+        if (slots == null) {
+            throw new IllegalArgumentException("Slots should not be null");
+        }
+        this.intentName = intentName;
+        this.slots = slots;
     }
 
-    public ConfirmIntentDialogAction(LexRequest lexRequest, Message message) {
-        this(lexRequest);
+    public ConfirmIntentDialogAction(String intentName, Map<String,String> slots, Message message) {
+        this(intentName, slots);
         setMessage(message);
     }
 
-    public ConfirmIntentDialogAction(LexRequest lexRequest, Message message, ResponseCard responseCard) {
-        this(lexRequest, message);
+    public ConfirmIntentDialogAction(String intentName, Map<String,String> slots, Message message, ResponseCard responseCard) {
+        this(intentName, slots, message);
         setResponseCard(responseCard);
     }
 
-    public ConfirmIntentDialogAction(LexRequest lexRequest, ResponseCard responseCard) {
-        this(lexRequest);
+    public ConfirmIntentDialogAction(String intentName, Map<String,String> slots, ResponseCard responseCard) {
+        this(intentName, slots);
         setResponseCard(responseCard);
     }
 
